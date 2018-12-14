@@ -1,6 +1,6 @@
 let fs = require('fs');
 
-let dataParser = require('../js/parse');
+let dataParser = require('../src/parse');
 
 
 const visaDataPath = 'data/passport-index-dataset/passport-index-country-names.csv';
