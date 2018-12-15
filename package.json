@@ -8,10 +8,15 @@
   "author": "Bogdan Kulynych",
   "license": "MIT",
   "dependencies": {
-    "csv": "^5.0.0"
+    "csv": "^5.0.0",
+    "jquery": "^3.3.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
     "babelify": "^10.0.0",
     "browserify": "^16.2.3",
     "watchify": "^3.11.0"
