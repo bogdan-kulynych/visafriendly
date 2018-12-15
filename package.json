@@ -8,7 +8,12 @@
   "author": "Bogdan Kulynych",
   "license": "MIT",
   "dependencies": {
-    "babel-cli": "^6.26.0",
     "csv": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
+    "watchify": "^3.11.0"
   }
 }
