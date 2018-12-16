@@ -1,9 +1,13 @@
+---
+title: Visa-friendly countries for conferences
+---
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
 
-    <title>Visa-friendly ranking conference place</title>
+    <title>{{ page.title }}</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -15,36 +19,39 @@
   </head>
   <body>
 
-    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <div class="navbar-item">
-          Visa-friendly
-        </div>
-      </div>
+    <!-- <nav class="navbar is-info" role="navigation" aria-label="main navigation"> -->
+    <!--   <div class="navbar-brand"> -->
+    <!--     <div class="navbar-item"> -->
+    <!--       Visa-friendly -->
+    <!--     </div> -->
+    <!--   </div> -->
 
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item">
-            Ranking
-          </a>
-          <a class="navbar-item">
-            Participant-specific ranking
-          </a>
-        </div>
-      </div>
-    </nav>
+    <!--   <div class="navbar-menu"> -->
+    <!--     <div class="navbar-start"> -->
+    <!--       <a class="navbar-item"> -->
+    <!--         Ranking -->
+    <!--       </a> -->
+    <!--       <a class="navbar-item"> -->
+    <!--         Participant-specific ranking -->
+    <!--       </a> -->
+    <!--     </div> -->
+    <!--   </div> -->
+    <!-- </nav> -->
 
     <section class="hero is-primary">
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
-            <i class="em em-earth_africa"></i> Visa-friendly countries
+            <i class="em em-earth_africa"></i>
+            {{ page.title }}
           </h1>
+          Average ranking.<br>
+          Coming soon: ranking specific to countries of participants
         </div>
       </div>
     </section>
 
-    <section class="is-loading">
+    <section class="is-loading" style="margin: 1em;">
       <div class="container" id="app">
       </div>
     </section>
