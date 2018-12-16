@@ -3,5 +3,5 @@ import ReactDOM from 'react-dom';
 
 import App from './app';
 
-ReactDOM.render(<App />, document.getElementById('countries-list'));
+ReactDOM.render(<App />, document.getElementById('app'));
 

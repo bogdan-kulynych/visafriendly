@@ -1,4 +1,4 @@
-const parse = require('csv-parse/lib/sync')
+const parse = require('csv-parse/lib/sync');
 
 
 function normalizeCountryName(country) {
@@ -30,7 +30,36 @@ function normalizeCountryName(country) {
 }
 
 
-exports.parseLgbtData = function(data) {
+function parseCountriesData(data) {
+  let csvSettings = {
+    delimiter: ';',
+    quote: '"',
+    skip_empty_lines: true,
+  };
+
+  const colIndex = {
+    countryName: 0,
+    alpha: 1,
+    numCode: 3,
+  }
+
+  let parsedData = parse(data, csvSettings).slice(1);
+  let alphaByCountry = new Map();
+  let numCodeByCountry = new Map();
+
+  for (let row of parsedData) {
+    let country = row[colIndex.countryName];
+    let alpha = row[colIndex.alpha];
+    let numCode = row[colIndex.numCode];
+    alphaByCountry.set(country, alpha);
+    numCodeByCountry.set(country, numCode);
+  }
+
+  return [alphaByCountry, numCodeByCountry];
+}
+
+
+function parseLgbtData(data) {
   const dataPatches = new Map(Object.entries({
     // Strong anti-propaganda laws.
     'Russia': 0,
@@ -66,7 +95,7 @@ exports.parseLgbtData = function(data) {
   let lgbtLegalByCountry = new Map();
   for (let [country, legal] of parsedData) {
     country = normalizeCountryName(country);
-    lgbtLegalByCountry.set(country, (legal == 1));
+    lgbtLegalByCountry.set(country, dataMapping[legal]);
   }
 
   // Patch the data.
@@ -77,7 +106,30 @@ exports.parseLgbtData = function(data) {
   return lgbtLegalByCountry;
 }
 
-exports.parseVisaData = function(data) {
+
+function parseConflictData(data) {
+  let csvSettings = {
+    delimiter: ';',
+    quote: '"',
+    skip_empty_lines: true,
+  };
+
+  const dataMapping = {
+    // Minor conflict.
+    '1': 1,
+    // Major conflict.
+    '2': 2
+  }
+
+  let conflictTypeByCountry = new Map(parse(data, csvSettings));
+  for (let [country, conflictType] of conflictTypeByCountry) {
+    conflictTypeByCountry.set(country, dataMapping[conflictType]);
+  }
+  return conflictTypeByCountry;
+}
+
+
+function parseVisaData(data) {
 
   // Normalized data values.
   const dataMapping = {
@@ -115,3 +167,6 @@ exports.parseVisaData = function(data) {
 
   return [fixedCountries, toMatrix];
 }
+
+
+export {parseCountriesData, parseLgbtData, parseConflictData, parseVisaData};
